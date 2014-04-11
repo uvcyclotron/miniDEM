@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>MiniDEM by uvcyclotron</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>MiniDEM</h1>
+          <h2>A simple digital elevation model generator using (Hypsometrically tinted) Topographic Maps using Python and Maya.</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/uvcyclotron/miniDEM/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/uvcyclotron/miniDEM/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/uvcyclotron/miniDEM" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a name="hypsomteric-tint-topographic-map-to-3d-model-generator" class="anchor" href="#hypsomteric-tint-topographic-map-to-3d-model-generator"><span class="octicon octicon-link"></span></a>Hypsomteric tint Topographic map to 3D model generator</h1>
+
+<p>Generates topographic 3D model of land using a hypsometric map (a contour map with differently tinted land areas). Inspired from the <a href="http://www.researchgate.net/publication/27646342_VRML_generator_of_land_features_3D_representation_based_on_a_hypsometric_map">original Paper</a> by W. Pasternak and Z. Latala.</p>
+
+<h3>
+<a name="tools-used" class="anchor" href="#tools-used"><span class="octicon octicon-link"></span></a>Tools used:</h3>
+
+<ul>
+<li>Python 2.7</li>
+<li>Maya 2013</li>
+</ul><h3>
+<a name="python-dependencies" class="anchor" href="#python-dependencies"><span class="octicon octicon-link"></span></a>Python dependencies:</h3>
+
+<ul>
+<li>numpy 1.8.1</li>
+<li>openCV 2.4.8</li>
+<li>matplotlib 1.3.0</li>
+<li>colorama 0.2.7</li>
+<li>json</li>
+</ul><h4>
+<a name="module1" class="anchor" href="#module1"><span class="octicon octicon-link"></span></a>Module1:</h4>
+
+<p><strong>Input:</strong> </p>
+
+<p>Any hypsometric contour map using the standard color ramp, ranging from 
+<code>dark blue&gt;blue &gt;cyan&gt;green&gt;yellow&gt;orange&gt;red</code> , would be suitable for use in this program. The color ramp data can be easily modified to accommodate maps using a different color ramp.
+Currently the standard color ramp is being used. </p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/10667631/Work/f4.png" alt="Sample input" title="Sample Input">
+Sample input map</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/10667631/Work/f4_2.png" alt="Overlaid with 4x4 mesh" title="Overlaid with 4x4 mesh">
+Sample input map overlaid with 4x4 mesh</p>
+
+<p><strong>Output:</strong></p>
+
+<p>The mapped color ramp index for each vertex pixel’s color is written to the output file 'meshdata.txt'.</p>
+
+<p>And terminal output: 
+The output is colored with similar colours to mimic the input map. Sample 50x50 output included in repository.</p>
+
+<pre><code>yellow  yellow  green   cyan    skblue
+yellow  yellow  green   cyan    skblue
+orange  orange  yellow  green   cyan
+dkorng  dkorng  yellow  green   cyan
+dkorng  red     orange  yellow  cyan
+</code></pre>
+
+<h4>
+<a name="module2" class="anchor" href="#module2"><span class="octicon octicon-link"></span></a>Module2:</h4>
+
+<p><strong>Input:</strong>
+The text output from module1 : <em>meshdata.txt</em></p>
+
+<p><strong>Output:</strong>
+a 3D polygonal mesh model of the topographic land map.</p>
+
+<p>The below sample output is for the 4x4 mesh data. 
+<img src="https://dl.dropboxusercontent.com/u/10667631/Work/sample_out.jpg" alt="Sample mesh output" title="Sample 4x4 mesh output"></p>
+
+<p>The below sample output is for the 50x50 mesh data, for the same input map.
+<img src="https://dl.dropboxusercontent.com/u/10667631/Work/out50x50.png" alt="Output for 50x50 mesh" title="Output for 50x50 mesh"></p>
+
+<h3>
+<a name="how-to-run" class="anchor" href="#how-to-run"><span class="octicon octicon-link"></span></a>How to Run:</h3>
+
+<ol>
+<li> Install all the python dependencies mentioned above for the respective modules.</li>
+<li> Run the module1 python script, obtain the meshdata.txt</li>
+<li> Ensure that path for meshdata.txt in module 2 is correct, if not so correct it.</li>
+<li> Open Maya 2013, and go to the Script Editor</li>
+<li> Copy the module2 program to the script editor and run it.</li>
+<li> The final model will be generated on screen</li>
+<li> Go to Shading submenu and apply Smooth shading/flat shading if desired.</li>
+</ol><p>The actual sample input and output model is also included in the repository.</p>
+
+<h3>
+<a name="possible-future-improvements" class="anchor" href="#possible-future-improvements"><span class="octicon octicon-link"></span></a>Possible future improvements:</h3>
+
+<ul>
+<li>  Add support for maps with black contour lines. Currently only borderless contour maps work.</li>
+<li>  A small module to automatically get the color palettle for any custom colour ramps used.</li>
+</ul>
+        </section>
+
+        <footer>
+          MiniDEM is maintained by <a href="https://github.com/uvcyclotron">uvcyclotron</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
