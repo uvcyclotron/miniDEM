@@ -2,36 +2,42 @@ Hypsomteric tint Topographic map to 3D model generator
 ===========================================
 
 
-Generates topographic 3D model of land using a hypsometric map (a contour map with differently tinted land areas). Inspired from the [original Paper][1] by W. Pasternak and Z. Latala.
+Generates topographic 3D model of land using a hypsometric map (a contour map with differently tinted land areas). Inspired from the [original Paper](http://www.researchgate.net/publication/27646342_VRML_generator_of_land_features_3D_representation_based_on_a_hypsometric_map) by W. Pasternak and Z. Latala.
 
 ###Tools used:
 + Python 2.7
 + Maya 2013
 
 ###Python dependencies:
-+ numpy
-+ openCV
-+ matplotlib
-+ colorama
++ numpy 1.8.1
++ openCV 2.4.8
++ matplotlib 1.3.0
++ colorama 0.2.7
 + json
 
 ####Module1:
 
-
 **Input:** 
 
-Any hypsometric contour map using the standard color ramp, ranging from dark blue>blue >cyan>green>yellow>orange>red, would be suitable for use in this program. The color ramp data can be easily modified to accommodate maps using a different color ramp.
+Any hypsometric contour map using the standard color ramp, ranging from 
+`dark blue>blue >cyan>green>yellow>orange>red` , would be suitable for use in this program. The color ramp data can be easily modified to accommodate maps using a different color ramp.
+Currently the standard color ramp is being used. 
 
-![Sample input](https://github.com/uvcyclotron/miniDEM/blob/master/sample_input_module1/f4.png "Sample Input")
+
+![Sample input](https://dl.dropboxusercontent.com/u/10667631/Work/f4.png "Sample Input")
+Sample input map
 
 
-[Sample images]
+![Overlaid with 4x4 mesh](https://dl.dropboxusercontent.com/u/10667631/Work/f4_2.png "Overlaid with 4x4 mesh")
+Sample input map overlaid with 4x4 mesh
+
 
 **Output:**
 
-The mapped color ramp index for each vertex pixel’s color is written to the output file. For the sample example shown above, with 4 sections each side, the output is: ] for the 5x5 vertex grid.
+The mapped color ramp index for each vertex pixel’s color is written to the output file 'meshdata.txt'.
 
 And terminal output: 
+The output is colored with similar colours to mimic the input map. Sample 50x50 output included in repository.
 
 	yellow	yellow	green	cyan	skblue
 	yellow	yellow	green	cyan	skblue
@@ -42,17 +48,17 @@ And terminal output:
 
 ####Module2:
 
-
 **Input:**
 The text output from module1 : *meshdata.txt*
 
 **Output:**
 a 3D polygonal mesh model of the topographic land map.
 
-[img]
+The below sample output is for the 4x4 mesh data. 
+![Sample mesh output](https://dl.dropboxusercontent.com/u/10667631/Work/sample_out.jpg "Sample 4x4 mesh output")
 
-The above sample output is for the 4x4 mesh data. 
-
+The below sample output is for the 50x50 mesh data, for the same input map.
+![Output for 50x50 mesh](https://dl.dropboxusercontent.com/u/10667631/Work/out50x50.png "Output for 50x50 mesh")
 
 
 ###How to Run:
