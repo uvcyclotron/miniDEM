@@ -22,6 +22,8 @@ Generates topographic 3D model of land using a hypsometric map (a contour map wi
 
 Any hypsometric contour map using the standard color ramp, ranging from dark blue>blue >cyan>green>yellow>orange>red, would be suitable for use in this program. The color ramp data can be easily modified to accommodate maps using a different color ramp.
 
+![Sample input](https://github.com/uvcyclotron/miniDEM/blob/master/sample_input_module1/f4.png "Sample Input")
+
 
 [Sample images]
 
@@ -42,7 +44,7 @@ And terminal output:
 
 
 **Input:**
-The text out put from module1 : *meshdata.txt*
+The text output from module1 : *meshdata.txt*
 
 **Output:**
 a 3D polygonal mesh model of the topographic land map.
