@@ -1,5 +1,9 @@
-Hypsomteric tint Topographic map to 3D model generator
+miniDEM
 ===========================================
+Digital elevation model generator for (Hypsomterically tinted) Topographic maps
+---------------------------------------------
+
+Visit website at [http://uvcyclotron.github.io/miniDEM](http://uvcyclotron.github.io/miniDEM)
 
 
 Generates topographic 3D model of land using a hypsometric map (a contour map with differently tinted land areas). Inspired from the [original Paper](http://www.researchgate.net/publication/27646342_VRML_generator_of_land_features_3D_representation_based_on_a_hypsometric_map) by W. Pasternak and Z. Latala.
@@ -77,4 +81,4 @@ The actual sample input and output model is also included in the repository.
 ###Possible future improvements:
 
 +	Add support for maps with black contour lines. Currently only borderless contour maps work.
-+	A small module to automatically get the color palettle for any custom colour ramps used.
++	A small module to automatically get the color palettle for any custom colour ramps used. (Can specify the palette region using a gui crop tool)
